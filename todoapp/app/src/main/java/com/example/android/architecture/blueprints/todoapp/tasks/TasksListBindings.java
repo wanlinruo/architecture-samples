@@ -16,8 +16,9 @@
 
 package com.example.android.architecture.blueprints.todoapp.tasks;
 
-import androidx.databinding.BindingAdapter;
 import android.widget.ListView;
+
+import androidx.databinding.BindingAdapter;
 
 import com.example.android.architecture.blueprints.todoapp.data.Task;
 
@@ -29,11 +30,10 @@ import java.util.List;
 public class TasksListBindings {
 
     @SuppressWarnings("unchecked")
-    @BindingAdapter("app:items")
+    @BindingAdapter("items")
     public static void setItems(ListView listView, List<Task> items) {
         TasksAdapter adapter = (TasksAdapter) listView.getAdapter();
-        if (adapter != null)
-        {
+        if (adapter != null) {
             adapter.replaceData(items);
         }
     }

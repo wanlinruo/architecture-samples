@@ -16,17 +16,18 @@
 
 package com.example.android.architecture.blueprints.todoapp.data.source.local;
 
+import android.content.Context;
+
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import android.content.Context;
 
 import com.example.android.architecture.blueprints.todoapp.data.Task;
 
 /**
  * The Room Database that contains the Task table.
  */
-@Database(entities = {Task.class}, version = 1)
+@Database(entities = {Task.class}, version = 1, exportSchema = false)
 public abstract class ToDoDatabase extends RoomDatabase {
 
     private static ToDoDatabase INSTANCE;
@@ -39,7 +40,7 @@ public abstract class ToDoDatabase extends RoomDatabase {
         synchronized (sLock) {
             if (INSTANCE == null) {
                 INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                        ToDoDatabase.class, "Tasks.db")
+                                ToDoDatabase.class, "Tasks.db")
                         .build();
             }
             return INSTANCE;

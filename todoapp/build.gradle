@@ -4,7 +4,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.0'
+        classpath 'com.android.tools.build:gradle:4.2.0'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -65,12 +65,12 @@ ext {
  * The workaround is to get the DataBindingExportBuildInfoTasks tasks for the instrumentation APK
  * and delete the files right after it creates them.
  */
-subprojects {
-    tasks.withType(com.android.build.gradle.internal.tasks.databinding.DataBindingExportBuildInfoTask) { task ->
-        if (task.name.endsWith("AndroidTest")) {
-            task.finalizedBy(tasks.create("${task.name}Workaround") << {
-                task.output.deleteDir()
-            })
-        }
-    }
-}
+//subprojects {
+//    tasks.withType(com.android.build.gradle.internal.tasks.databinding.DataBindingExportBuildInfoTask) { task ->
+//        if (task.name.endsWith("AndroidTest")) {
+//            task.finalizedBy(tasks.create("${task.name}Workaround") << {
+//                task.output.deleteDir()
+//            })
+//        }
+//    }
+//}
